@@ -48,6 +48,8 @@ public class HandlerFactory {
                 return new registerPreHandler();
             case "registerContinued":
                 return new registerHandler(persons);
+            case "logOut":
+                return new logOutHandler();
             case "index":
                 return new IndexHandler();
             default:

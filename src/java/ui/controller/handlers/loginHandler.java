@@ -40,6 +40,7 @@ public class loginHandler extends RequestHandler {
            
            request.setAttribute("login", true);
            request.setAttribute("loggedInPerson", p);
+           session.setAttribute("user", p);
            request.getRequestDispatcher("Controller?action=index").forward(request, response);
        }
        else {

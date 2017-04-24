@@ -31,7 +31,9 @@
 							<!-- Nav -->
 								<nav>
 									<ul>
+                                                                             <c:if test="${sessionScope.loginid != null}">
 										<li><a href="#menu">Menu</a></li>
+                                                                             </c:if>
 									</ul>
 								</nav>
 
@@ -43,10 +45,13 @@
 						<h2>Menu</h2>
 						<ul>
 							<li><a href="index.jsp">Home</a></li>
+                                                        <c:if test="${sessionScope.user.getRoleString() == 'administrator'}">
 							<li><a href="Controller?action=personOverview">Ipsum veroeros</a></li>
+                                                        </c:if>
 							<li><a href="generic.html">Tempus etiam</a></li>
 							<li><a href="generic.html">Consequat dolor</a></li>
 							<li><a href="elements.html">Elements</a></li>
+                                                        <li style="margin-top: 100px"><a href="Controller?action=logOut">Log out</a></li>
 						</ul>
 					</nav>
 
