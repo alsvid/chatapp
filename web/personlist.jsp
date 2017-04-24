@@ -59,18 +59,20 @@
 								<p>All people currently added to the database</p>
 							</header>
                             </center>
-                                                    <table>
+                                                    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for usernames..">
+
+                                                    <table id="myTable">
                                                         <tr>
-                                                            <th>name</th>
-                                                            <th>surname</th>
                                                             <th>username</th>
+                                                            <th>surname</th>
+                                                            <th>name</th>
                                                             <th>Role</th>
                                                         </tr>
                                                         <c:forEach var="person" items="${people}">
                                                             <tr>
-                                                                <td><c:out value='${person.firstname}'/></td>
-                                                                <td><c:out value='${person.lastname}'/></td>
                                                                 <td><c:out value='${person.userid}'/></td>
+                                                                <td><c:out value='${person.firstname}'/></td>
+                                                                <td><c:out value='${person.lastname}'/></td>                                                        
                                                                 <td><c:out value='${person.role}'/></td>
                                                             </tr>
                                                         </c:forEach>
@@ -96,6 +98,7 @@
 			<script src="assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
+                        <script src="assets/js/searchbarscript.js"></script>
 
 	</body>
 </html>
