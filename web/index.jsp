@@ -59,13 +59,13 @@
 							</header>
                             </center>
                             <c:choose>
-                                <c:when test="${login}">
+                                <c:when test="${login || sessionScope.loginid != null}">
                                 <c:if test="${error != null}">
                                     <ul class="alert-danger">
                                         <p>${error}</p>
                                     </ul>
                                 </c:if>
-                                <h2>Welcome <c:out value='${loggedInPerson.firstname}' /></h2>
+                                <h2>Welcome <c:out value='${sessionScope.loginid}' /></h2>
                                 </c:when>
                                 <c:otherwise>
                                 <c:if test="${error != null}">
@@ -89,7 +89,8 @@
 				</form>
                                 </c:otherwise>
                             </c:choose>
-                                
+                                <c:choose>
+                            <c:when test="${login || sessionScope.loginid != null}">
                                         
 							<section class="tiles">
 								<article class="style1">
@@ -137,7 +138,10 @@
 									</a>
 								</article>
 							</section>
-						</div>
+                            </c:when>
+                                                        <c:otherwise></c:otherwise>
+                                </c:choose>
+                            		</div>
 					</div>
 
 				<!-- Footer -->
