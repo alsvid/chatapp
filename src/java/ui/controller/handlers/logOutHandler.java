@@ -6,6 +6,7 @@
 package ui.controller.handlers;
 
 import java.io.IOException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,8 +29,10 @@ public class logOutHandler extends RequestHandler {
         session.setAttribute("user", null);
         request.setAttribute("login", null);
         request.setAttribute("loggedInPerson", null);
-        
-        response.sendRedirect("Controller?action=index");
+        request.setAttribute("loggedout", true);
+        RequestDispatcher view = request.getRequestDispatcher("index.jsp");
+        view.forward(request, response);
+        //response.sendRedirect("Controller?action=index");
         
                 
     }

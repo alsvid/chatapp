@@ -16,6 +16,20 @@
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 	</head>
 	<body>
+            <<c:if test="${loggedout}">
+            
+                <article id="logoutpopup">
+                    <center>
+                    <h2 id="loggedsuccess">
+                        Logged out successfully
+                    </h2>
+                    <button onclick="document.getElementById('logoutpopup').style.display='none'" >close</button>
+                    </center>
+                    
+                </article>
+          
+            </c:if>
+            
 		<!-- Wrapper -->
 			<div id="wrapper">
 
@@ -46,7 +60,7 @@
 						<ul>
 							<li><a href="index.jsp">Home</a></li>
                                                         <c:if test="${sessionScope.user.getRoleString() == 'administrator'}">
-							<li><a href="Controller?action=personOverview">Ipsum veroeros</a></li>
+							<li><a href="Controller?action=personOverview">Account overview</a></li>
                                                         </c:if>
 							<li><a href="generic.html">Tempus etiam</a></li>
 							<li><a href="generic.html">Consequat dolor</a></li>
@@ -152,30 +166,6 @@
 				<!-- Footer -->
 					<footer id="footer">
 						<div class="inner">
-							<section>
-								<h2>Get in touch</h2>
-								<form method="post" action="mailto:alsvid.git@gmail.com">
-									<div class="field half first">
-										<input type="text" name="name" id="name" placeholder="Name" />
-									</div>
-									<div class="field half">
-										<input type="email" name="email" id="email" placeholder="Email" />
-									</div>
-									<div class="field">
-										<textarea name="message" id="message" placeholder="Message"></textarea>
-									</div>
-									<ul class="actions">
-										<li><input type="submit" value="Send" class="special" /></li>
-									</ul>
-								</form>
-							</section>
-							<section>
-								<h2>Follow</h2>
-								<ul class="icons">
-									<li><a href="#" class="icon style2 fa-facebook"><span class="label">Facebook</span></a></li>
-									<li><a href="#" class="icon style2 fa-envelope-o"><span class="label">Email</span></a></li>
-								</ul>
-							</section>
 							<ul class="copyright">
 								<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
 							</ul>
