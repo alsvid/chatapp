@@ -3387,3 +3387,151 @@
 			}
 
 		}
+                
+             
+.chat_box {
+    cursor: pointer;
+    position: fixed;
+    bottom: 0px;
+    right: 20px;
+    background: white;
+    width: 250px;
+    border-radius: 5px 5px 0px 0px;
+}
+
+.chat_head,.msg_head {
+    background: orange;
+    padding: 15px;
+    color: white;
+    border-radius: 5px 5px 0px 0px;
+}
+
+.chat_body {
+    overflow: auto;
+    height: 400px;
+}
+
+.msg_box {
+    cursor: pointer;
+    position: fixed;
+    bottom: 0px;
+    background: white;
+    width: 250px;
+    border-radius: 5px 5px 0px 0px;
+    bottom: -5px;
+}
+
+.msg_body {
+    height: 300px;
+    font-size: 12px;
+    font-family: sans-serif;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+.msg_a {
+    top: 10px;
+    min-height: 15px;
+    maring-top: 10px;
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    padding: 15px;
+    background: gray;
+    position: relative;
+    border-radius: 5px;
+}
+
+.msg_a:before {
+    word-wrap:break-word;
+    content: "";
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    left: -27px;
+    top: 0px;
+    border: 15px solid;
+    border-color: transparent gray transparent transparent;
+}
+
+.msg_b {
+    word-wrap:break-word;
+    top: 10px;
+    min-height: 15px;
+    maring-top: 10px;
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    padding: 15px;
+    background: lightgray;
+    position: relative;
+    border-radius: 5px;
+}
+
+.msg_b:before {
+    content: "";
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    right: -27px;
+    top: 0px;
+    border: 15px solid;
+    border-color: transparent transparent transparent lightgrey;
+}
+
+.msg_head {
+    background-color: orangered;
+    font-family: sans-serif;
+}
+
+.user {
+    cursor: pointer;
+    font-family: sans-serif;
+    padding: 15px 25px;
+    position: relative;
+}
+
+.user:hover {
+    background: gray;
+}
+
+.user:before {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: green;
+    left: 8px;
+    top: 24px;
+    border-radius: 5px;
+}
+
+.close {
+    float: right;
+    color: white;
+}
+
+.close:hover {
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+}
+
+.msg_input {
+    border: transparent;
+    border-top: 2px solid gray;
+    width :100%;
+    padding: 5px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.user_td {
+    padding: 0 0 0 0;
+}
+
+.user_tr {
+    padding: 0 0 0 0;
+}
+
+
+
+    

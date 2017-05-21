@@ -161,9 +161,80 @@
                                                         <c:otherwise></c:otherwise>
                                 </c:choose>
                             		</div>
+                                            <c:if test="${sessionScope.loginid != null}">
+                                              
+        <div class="chat_box">
+            <div class="chat_head">
+                Chatbox
+            </div>
+            <div class="chat_body">
+                <table>
+                <c:forEach var="person" items="${sessionScope.user.getArrayFriendList()}">
+                <tr class="user_tr">
+                <td class="user_td">
+                <div class="user">
+                    <c:out value='${person.userid}'/>
+                </div>
+                </td>
+                </tr>
+                </c:forEach>
+                </table>
+            </div>
+        </div>
+        
+        <div class="msg_box" style="right:290px">
+            <div class="msg_head">Test-user
+                <div class="close">X</div>
+            </div>
+            <div class="msg_wrap">
+            <div class="msg_body">
+                <div class="msg_insert" id="messages"></div>
+            </div>
+            <div class="msg_footer">
+                <textarea type="text" class="msg_input" id="messageinput" rows="4"></textarea>
+            </div>
+            <div class="messagebuttons">
+            <button type="button" onclick="openSocket();" style="display: inline-block;" >Open</button>
+            <button type="button" onclick="send();" style="display: inline-block;" >Send</button>
+            <button type="button" onclick="closeSocket();" style="display: inline-block;" >Close</button>
+            </div>
+            </div>
+            <script type="text/javascript">
+                var webSocket;
+                var messages = document.getElementById("messages");
+                var path = "ChatApp";
+                
+                function openSocket() {
+                    webSocket = new WebSocket("ws://localhost:8080/"+path+"/echo");
+                    webSocket.onopen = function(event) {
+                        writeResponse("Connection opened");
+                    };
+                    webSocket.onmessage = function(event) {
+                        writeResponse(event.data);
+                    };
+                    webSocket.onclose = function(event) {
+                        writeResponse("Connection closed");
+                    };
+                }
+                
+                function send() {
+                    var text = document.getElementById("messageinput").value;
+                    webSocket.send(text);
+                }
+                
+                function closeSocket() {
+                    webSocket.close();
+                }
+                
+                function writeResponse(text) {
+                    messages.innerHTML += "<div class='msg_a'>" + text + "</div>";
+                }
+            </script>
+        </div>
+                                            </c:if>
 					</div>
 
-				<!-- Footer -->
+				<!-- Footer
 					<footer id="footer">
 						<div class="inner">
 							<ul class="copyright">
@@ -171,7 +242,7 @@
 							</ul>
 						</div>
 					</footer>
-
+                                        -->
 			</div>
 
 		<!-- Scripts -->
@@ -180,6 +251,7 @@
 			<script src="assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
+                        <script src="assets/js/chatboxscript.js"></script>
 
 	</body>
 </html>
