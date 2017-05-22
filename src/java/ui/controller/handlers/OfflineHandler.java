@@ -10,6 +10,7 @@ import domain.model.Person;
 import domain.model.Person.STATUS;
 import domain.service.PersonRepository;
 import java.io.IOException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,7 +24,7 @@ public class OfflineHandler extends RequestHandler {
     private PersonRepository persons = new PersonListInMemory();
 
     public OfflineHandler() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       
     }
     
     @Override
@@ -34,6 +35,8 @@ public class OfflineHandler extends RequestHandler {
                 person.setStatus(STATUS.OFFLINE);
             }
         }
+        RequestDispatcher view = request.getRequestDispatcher("index.jsp");
+        view.forward(request, response);
     }
     
 }
