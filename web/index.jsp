@@ -66,6 +66,14 @@
 							<li><a href="generic.html">Consequat dolor</a></li>
 							<li><a href="elements.html">Elements</a></li>
                                                         <li style="margin-top: 100px"><a href="Controller?action=logOut">Log out</a></li>
+                                                        <table>
+                                                        <tr>
+                                                            <td><a href="Controller?action=onlinebutton">Online</a></td>
+                                                            <td><a href="Controller?action=awaybutton">Away</a></td>
+                                                            <td><a href="Controller?action=offlinebutton">Offline</a></td>
+                                                        </tr>
+                                                        </table>
+                                                        <p><b>Current status:</b> <c:out value='${sessionScope.user.getStatusString()}' /></p>
 						</ul>
 					</nav>
 

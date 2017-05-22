@@ -52,6 +52,8 @@ public class HandlerFactory {
                 return new logOutHandler();
             case "index":
                 return new IndexHandler();
+            case "offlinebutton":
+                return new OfflineHandler();
             default:
                 return new IndexHandler();
         }

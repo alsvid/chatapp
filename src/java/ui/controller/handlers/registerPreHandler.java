@@ -17,7 +17,7 @@ import ui.controller.handlers.RequestHandler;
  * @author Alsvid
  */
 public class registerPreHandler extends RequestHandler {
-
+    
     public registerPreHandler() {
     }
 
