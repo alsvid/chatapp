@@ -19,25 +19,37 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Alsvid
  */
-public class OfflineHandler extends RequestHandler {
+public class FriendListPollingHandler extends RequestHandler {
     
     private PersonRepository persons = new PersonListInMemory();
 
-    public OfflineHandler() {
+    public FriendListPollingHandler() {
        
     }
     
     @Override
     public void handleRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Person p = (Person) request.getSession().getAttribute("user");
-        for (Person person : persons.getPersonlist()) {
-            if (person.equals(p)) {
-                person.setStatus(STATUS.OFFLINE);
-            }
+        String outXML = "";
+        for (Person person : p.getFriendList().getFriendlist()) {
+            outXML += this.personFriendToXML(person);
         }
-        request.setAttribute("status", "offline");
-        RequestDispatcher view = request.getRequestDispatcher("index.jsp");
-        view.forward(request, response);
+        response.setContentType("text/xml");
+        response.getWriter().write(outXML);
     }
     
+    public String personFriendToXML(Person p){
+       StringBuffer xmlDoc = new StringBuffer();
+       
+       xmlDoc.append("<friend>\n");
+       xmlDoc.append("<userid>\n");
+       xmlDoc.append(p.getUserid());
+       xmlDoc.append("</userid>\n");
+       xmlDoc.append("<status>\n");
+       xmlDoc.append(p.getStatusString());
+       xmlDoc.append("</status>\n");
+       xmlDoc.append("</friend>\n");
+       
+       return xmlDoc.toString();
+    }
 }

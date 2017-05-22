@@ -19,11 +19,11 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Alsvid
  */
-public class OfflineHandler extends RequestHandler {
+public class AwayHandler extends RequestHandler {
     
     private PersonRepository persons = new PersonListInMemory();
 
-    public OfflineHandler() {
+    public AwayHandler() {
        
     }
     
@@ -32,10 +32,10 @@ public class OfflineHandler extends RequestHandler {
         Person p = (Person) request.getSession().getAttribute("user");
         for (Person person : persons.getPersonlist()) {
             if (person.equals(p)) {
-                person.setStatus(STATUS.OFFLINE);
+                person.setStatus(STATUS.AWAY);
             }
         }
-        request.setAttribute("status", "offline");
+        request.setAttribute("status", "away");
         RequestDispatcher view = request.getRequestDispatcher("index.jsp");
         view.forward(request, response);
     }

@@ -54,6 +54,12 @@ public class HandlerFactory {
                 return new IndexHandler();
             case "offlinebutton":
                 return new OfflineHandler();
+            case "onlinebutton":
+                return new OnlineHandler();
+            case "awaybutton":
+                return new AwayHandler();
+            case "friendstoxml":
+                return new FriendListPollingHandler();
             default:
                 return new IndexHandler();
         }

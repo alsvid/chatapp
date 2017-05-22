@@ -73,7 +73,30 @@
                                                             <td><a href="Controller?action=offlinebutton">Offline</a></td>
                                                         </tr>
                                                         </table>
-                                                        <p><b>Current status:</b> <c:out value='${sessionScope.user.getStatusString()}' /></p>
+                                                        <c:choose>
+                                                        <c:when test="${status == null}">
+                                                              <c:if test="${sessionScope.user.getStatusString() == 'online'}">
+                                                                <p style="Color: green;"><b style="Color: white;">Current status:</b> Online</p>
+                                                            </c:if>
+                                                             <c:if test="${sessionScope.user.getStatusString() == 'away'}">
+                                                                <p style="Color: orange;"><b style="Color: white;">Current status:</b> Away</p>
+                                                            </c:if>
+                                                             <c:if test="${sessionScope.user.getStatusString() == 'offline'}">
+                                                                <p style="Color: red;"><b style="Color: white;">Current status:</b> Offline</p>
+                                                            </c:if>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <c:if test="${status == 'online'}">
+                                                                <p style="Color: green;"><b style="Color: white;">Current status:</b> Online</p>
+                                                            </c:if>
+                                                             <c:if test="${status == 'away'}">
+                                                                <p style="Color: orange;"><b style="Color: white;">Current status:</b> Away</p>
+                                                            </c:if>
+                                                             <c:if test="${status == 'offline'}">
+                                                                <p style="Color: red;"><b style="Color: white;">Current status:</b> Offline</p>
+                                                            </c:if>
+                                                        </c:otherwise>
+                                                        </c:choose>
 						</ul>
 					</nav>
 
@@ -116,58 +139,8 @@
 				</form>
                                 </c:otherwise>
                             </c:choose>
-                                <c:choose>
-                            <c:when test="${login || sessionScope.loginid != null}">
-                                        
-							<section class="tiles">
-								<article class="style1">
-									<span class="image">
-										<img src="images/pic01.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>About me</h2>
-										<div class="content">
-											<p>Who am I?</p>
-										</div>
-									</a>
-								</article>
-								<article class="style2">
-									<span class="image">
-										<img src="images/pic02.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Competentions</h2>
-										<div class="content">
-											<p>What am I capable of?</p>
-										</div>
-									</a>
-								</article>
-								<article class="style4">
-									<span class="image">
-										<img src="images/pic04.jpg" alt="" />
-									</span>
-									<a href="personlist.html">
-										<h2>Curriculum vitae</h2>
-										<div class="content">
-											<p>Read or download my resume here.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style5">
-									<span class="image">
-										<img src="images/pic05.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-										<h2>Projects</h2>
-										<div class="content">
-											<p>Some of my past projects.</p>
-										</div>
-									</a>
-								</article>
-							</section>
-                            </c:when>
-                                                        <c:otherwise></c:otherwise>
-                                </c:choose>
+                         
+                           
                             		</div>
                                             <c:if test="${sessionScope.loginid != null}">
                                               
